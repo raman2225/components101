@@ -1,0 +1,50 @@
+<div>
+<h2>{{title}}</h2>
+
+<div *ngIf="!name; else forminfo">
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+      <div class="form-container">
+        <div class="row columns">
+          <h1>My Reactive Form</h1>
+          <label>Name
+            <input type="text" formControlName="name">
+          </label>
+  
+          <label>Description
+            <textarea  formControlName="description"></textarea>
+          </label>
+  
+          <label for="validate">Minimum of 3 Characters</label>
+          <input type="checkbox" name="validate" formControlName="validate" value="1"> On
+          
+          <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+        </div>
+      </div>
+    </form>
+  </div>
+<div>
+  <ng-template #forminfo>
+    <div class="form-container">
+      <div class="row columns">
+          <label>Name : {{ name }}</label>
+  
+          <label>Description : {{ description }}</label>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<p [@myAwesomeAnimation]='state' (click)='animateMe()'>I will animate</p>
+
+<h1 [ngStyle]="titleStyles">hey guys</h1>
+<div>{{myObject.location}}</div>
+<div *ngIf="myArr;then tmpl1 else tmpl2"></div>
+
+<ng-template #tmpl1>truth</ng-template>
+<ng-template #tmpl2>False</ng-template>
+
+<button [disabled]="buttonStatus">My btn</button>
+
+<button (mouseenter)="myEvent($event)">My Button</button>
+<p>{{someProperty}}</p>
+</div>
+
